@@ -6,8 +6,6 @@ import peaksoft.model.enums.StudyFormat;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 @Getter @Setter
 public class StudentRequest {
@@ -19,5 +17,4 @@ public class StudentRequest {
     private String email;
 
     private StudyFormat studyFormat;
-
 }

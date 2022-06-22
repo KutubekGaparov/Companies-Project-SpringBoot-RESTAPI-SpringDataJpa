@@ -1,5 +1,6 @@
 package peaksoft.apis;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.dto.request.CompanyRequest;
@@ -15,6 +16,7 @@ public class CompanyApi {
 
     private final CompanyService service;
 
+    @Operation(summary = "Zhanarbek",description = "Kutubek")
     @GetMapping("/getAll")
     public List<Company> getAllCompany() {
         return service.findAllCompany();

@@ -2,8 +2,6 @@ package peaksoft.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -27,6 +25,7 @@ public class Course {
 
     @NotBlank
     private String courseName;
+
     @NotBlank
     private String duration;
 

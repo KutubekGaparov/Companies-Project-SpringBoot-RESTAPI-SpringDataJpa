@@ -8,8 +8,9 @@ import peaksoft.exseptions.BadRequestException;
 import peaksoft.exseptions.NotFoundException;
 import peaksoft.model.Company;
 import peaksoft.dto.response.Response;
-import peaksoft.repository.CompanyRepository;
 import peaksoft.service.CompanyService;
+import peaksoft.repository.CompanyRepository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -80,10 +81,10 @@ public class CompanyServiceImpl implements CompanyService {
     public Response updateById(Long id, CompanyRequest newCompany) {
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> {
-            throw new NotFoundException(
-                    String.format("company with id = %s does not exists", id)
-            );
-        });
+                    throw new NotFoundException(
+                            String.format("company with id = %s does not exists", id)
+                    );
+                });
 
         String companyName = company.getCompanyName();
         String newCompanyName = newCompany.getCompanyName();

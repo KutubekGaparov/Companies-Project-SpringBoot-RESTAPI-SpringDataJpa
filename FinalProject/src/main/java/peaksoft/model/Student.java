@@ -3,13 +3,15 @@ package peaksoft.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import peaksoft.model.enums.StudyFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
@@ -37,6 +39,5 @@ public class Student {
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private Group groups;
-
 
 }
