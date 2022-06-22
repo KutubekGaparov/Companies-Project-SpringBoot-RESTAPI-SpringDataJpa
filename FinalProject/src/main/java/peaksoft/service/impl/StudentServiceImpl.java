@@ -9,9 +9,10 @@ import peaksoft.exseptions.NotFoundException;
 import peaksoft.dto.response.Response;
 import peaksoft.model.Student;
 import peaksoft.model.enums.StudyFormat;
-import peaksoft.repository.StudentRepository;
 import peaksoft.service.GroupService;
 import peaksoft.service.StudentService;
+import peaksoft.repository.StudentRepository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +31,9 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Response saveStudent(StudentRequest studentDto, Long id) {
         String email = studentDto.getEmail();
+
         Optional<Student> studentOptional = studentRepository.findByEmail(email);
+
         if (studentOptional.isPresent()){
             throw new BadRequestException(
                     String.format("Student with  Email = %s already exists", email)
@@ -38,6 +41,7 @@ public class StudentServiceImpl implements StudentService {
         }
         Student student = studentMapper.create(studentDto);
         student.setGroups(groupService.getById(id));
+
         Student saveStudent = studentRepository.save(student);
         return Response.builder()
                 .httpStatus(CREATED)

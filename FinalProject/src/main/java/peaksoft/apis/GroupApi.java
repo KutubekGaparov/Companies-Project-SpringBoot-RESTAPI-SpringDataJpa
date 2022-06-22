@@ -2,6 +2,7 @@ package peaksoft.apis;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import peaksoft.dto.DateDto;
 import peaksoft.dto.request.GroupRequest;
 import peaksoft.model.Group;
 import peaksoft.dto.response.Response;
@@ -41,4 +42,8 @@ public class GroupApi {
         return groupService.deleteById(id);
     }
 
+    @PostMapping("/getDates")
+    public List<Group> getGroupByDate(@RequestBody DateDto dto){
+        return groupService.getByDates(dto.getStart(),dto.getFinish());
+    }
 }

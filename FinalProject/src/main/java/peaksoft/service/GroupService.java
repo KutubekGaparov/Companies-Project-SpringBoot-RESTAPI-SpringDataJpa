@@ -4,6 +4,7 @@ import peaksoft.dto.request.GroupRequest;
 import peaksoft.model.Group;
 import peaksoft.dto.response.Response;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface GroupService {
@@ -17,4 +18,7 @@ public interface GroupService {
     List<Group> findAllGroup();
 
     Response updateById(Long id, GroupRequest group);
+
+    List<Group> getByDates(LocalDate dateOfStart, LocalDate dateOfFinish);
+
 }

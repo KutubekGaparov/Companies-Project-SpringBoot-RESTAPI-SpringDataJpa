@@ -7,9 +7,9 @@ import peaksoft.mapper.GroupMapper;
 import peaksoft.exseptions.NotFoundException;
 import peaksoft.model.Group;
 import peaksoft.dto.response.Response;
-import peaksoft.repository.GroupRepository;
 import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
+import peaksoft.repository.GroupRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -95,5 +95,10 @@ public class GroupServiceImpl implements GroupService {
                 .httpStatus(RESET_CONTENT)
                 .message(message)
                 .build();
+    }
+
+    @Override
+    public List<Group> getByDates(LocalDate dateOfStart, LocalDate dateOfFinish) {
+        return groupRepository.getByDates(dateOfStart,dateOfFinish);
     }
 }

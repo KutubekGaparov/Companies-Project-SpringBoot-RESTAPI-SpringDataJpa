@@ -8,9 +8,10 @@ import peaksoft.exseptions.BadRequestException;
 import peaksoft.exseptions.NotFoundException;
 import peaksoft.model.Course;
 import peaksoft.dto.response.Response;
-import peaksoft.repository.CourseRepository;
 import peaksoft.service.CompanyService;
 import peaksoft.service.CourseService;
+import peaksoft.repository.CourseRepository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -26,8 +27,10 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Response saveCourse(CourseRequest courseDto, Long id) {
+
         String courseName = courseDto.getCourseName();
         checkCourseName(courseName);
+
         Course course = courseMapper.create(courseDto);
         course.setCompany(companyService.getById(id));
         Course saveCourse = courseRepository.save(course);

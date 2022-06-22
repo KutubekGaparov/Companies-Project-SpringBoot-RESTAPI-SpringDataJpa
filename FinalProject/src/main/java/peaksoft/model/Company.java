@@ -1,6 +1,7 @@
 package peaksoft.model;
 
 import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -29,6 +30,5 @@ public class Company {
     @OneToMany(mappedBy = "company",
             cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     public List<Course> course;
-
 
 }
